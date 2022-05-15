@@ -69,6 +69,10 @@ public class Bench {
         @Override
         public int[] apply(int[] array) { return BucketSort.sort(array); }
     };
+    public static Function<int[], int[]> radixSort = new Function<int[], int[]>() {
+        @Override
+        public int[] apply(int[] array) { return RadixSort.sort(array); }
+    };
 
     // Execute an algorithm on an input and return its runtime.
     private static String execute(Function<int[], int[]> algorithm, int[] input) {
@@ -170,7 +174,8 @@ public class Bench {
                         "Quicksort      | %14s | %14s | %14s\n" +
                         "Merge sort     | %14s | %14s | %14s\n" +
                         "Counting sort  | %14s | %14s | %14s\n" +
-                        "Bucket sort    | %14s | %14s | %14s\n",
+                        "Bucket sort    | %14s | %14s | %14s\n" +
+                        "Radix sort     | %14s | %14s | %14s\n",
                 size,
         "Random", "95% sorted", "Sorted",
                 execute(insertionSort, randomSample),
@@ -187,7 +192,10 @@ public class Bench {
                 execute(countingSort, sortedSample),
                 execute(bucketSort, randomSample),
                 execute(bucketSort, partiallySortedSample),
-                execute(bucketSort, sortedSample)
+                execute(bucketSort, sortedSample),
+                execute(radixSort, randomSample),
+                execute(radixSort, partiallySortedSample),
+                execute(radixSort, sortedSample)
         ));
     }
 }
