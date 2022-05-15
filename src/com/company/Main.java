@@ -18,12 +18,12 @@ public class Main {
 
         //InsertionSort s = new InsertionSort(); //works
         //BucketSort s = new BucketSort(); // doesn't work
-        CountingSort s = new CountingSort(); // works
-        //RadixSort s = new RadixSort();
-        int[] output = s.sort(input, 99);
-
+        //CountingSort s = new CountingSort(); // works
+        RadixSort s = new RadixSort();
+        //int[] output = s.sort(input, 99);
+        s.sort2(input);
         for(int i = 0; i < numberOfInput; i++){
-            System.out.print(output[i] + " ");
+            System.out.print(input[i] + " ");
         }
         System.out.print("\n");
     }
