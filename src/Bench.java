@@ -63,7 +63,11 @@ public class Bench {
     };
     public static Function<int[], int[]> countingSort = new Function<int[], int[]>() {
         @Override
-        public int[] apply(int[] array){ return CountingSort.sort(array);}
+        public int[] apply(int[] array) { return CountingSort.sort(array);}
+    };
+    public static Function<int[], int[]> bucketSort = new Function<int[], int[]>() {
+        @Override
+        public int[] apply(int[] array) { return BucketSort.sort(array); }
     };
 
     // Execute an algorithm on an input and return its runtime.
@@ -165,7 +169,8 @@ public class Bench {
                         "Insertion sort | %14s | %14s | %14s\n" +
                         "Quicksort      | %14s | %14s | %14s\n" +
                         "Merge sort     | %14s | %14s | %14s\n" +
-                        "Counting sort  | %14s | %14s | %14s\n",
+                        "Counting sort  | %14s | %14s | %14s\n" +
+                        "Bucket sort    | %14s | %14s | %14s\n",
                 size,
         "Random", "95% sorted", "Sorted",
                 execute(insertionSort, randomSample),
@@ -179,7 +184,10 @@ public class Bench {
                 execute(mergeSort,  sortedSample),
                 execute(countingSort, randomSample),
                 execute(countingSort, partiallySortedSample),
-                execute(countingSort, sortedSample)
+                execute(countingSort, sortedSample),
+                execute(bucketSort, randomSample),
+                execute(bucketSort, partiallySortedSample),
+                execute(bucketSort, sortedSample)
         ));
     }
 }

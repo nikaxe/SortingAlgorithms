@@ -19,7 +19,7 @@ public class InsertionSort {
         return input;
     }
 
-    public void sort(List<Integer> input){
+    public static void sort(List<Integer> input){
         int i = 1;
         int x;
         int j;
