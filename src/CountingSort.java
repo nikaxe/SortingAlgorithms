@@ -1,8 +1,11 @@
-package com.company;
-
 public class CountingSort {
 
-    public int[] sort(int[] input, int k){
+    public static int[] sort(int[] input){
+        int k = 0;
+        for(int i = 0; i < input.length; i++){
+            if(k < input[i]) k = input[i];
+        }
+
         int[] count = new int[k + 1];
         int[] output = new int[input.length];
         int i, j;

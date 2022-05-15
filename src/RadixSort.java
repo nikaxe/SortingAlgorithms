@@ -1,5 +1,3 @@
-package com.company;
-
 public class RadixSort {
     public int[] sort(int[] input){
         int[] output = new int[input.length];

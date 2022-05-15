@@ -1,6 +1,8 @@
 //// HERE BE DRAGONS!
 // // You don't have to read any of this file.
 // It's just the benchmarking program.
+//package com.company;
+//import com.company.CountingSort;
 
 import java.util.*;
 public class Bench {
@@ -58,6 +60,10 @@ public class Bench {
         public int[] apply(int[] array) {
             return Lab1.mergeSort(array);
         }
+    };
+    public static Function<int[], int[]> countingSort = new Function<int[], int[]>() {
+        @Override
+        public int[] apply(int[] array){ return CountingSort.sort(array);}
     };
 
     // Execute an algorithm on an input and return its runtime.
@@ -158,7 +164,8 @@ public class Bench {
                         "Algorithm      | %14s | %14s | %14s\n" +
                         "Insertion sort | %14s | %14s | %14s\n" +
                         "Quicksort      | %14s | %14s | %14s\n" +
-                        "Merge sort     | %14s | %14s | %14s\n",
+                        "Merge sort     | %14s | %14s | %14s\n" +
+                        "Counting sort  | %14s | %14s | %14s\n",
                 size,
         "Random", "95% sorted", "Sorted",
                 execute(insertionSort, randomSample),
@@ -169,7 +176,10 @@ public class Bench {
                 execute(quickSort,  sortedSample),
                 execute(mergeSort,  randomSample),
                 execute(mergeSort,  partiallySortedSample),
-                execute(mergeSort,  sortedSample)
+                execute(mergeSort,  sortedSample),
+                execute(countingSort, randomSample),
+                execute(countingSort, partiallySortedSample),
+                execute(countingSort, sortedSample)
         ));
     }
 }
