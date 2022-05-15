@@ -1,8 +1,47 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class BucketSort{
 
     InsertionSort is = new InsertionSort();
+
+
+
+    public int[] sort2(int[] input) {
+
+        int k = input.length / 20;
+        int[] output = new int[input.length];
+
+
+        List<LinkedList<Integer>> buckets = new ArrayList<>();
+        for (int i = 0; i < k; i++) {
+            buckets.add(new LinkedList<>());
+        }
+
+        for (int i : input) {
+            int bucketDestination = i % k;
+            buckets.get(bucketDestination).add(i);
+        }
+
+        for (LinkedList<Integer> bucket : buckets) {
+            is.sort(bucket);
+        }
+
+        int index = 0;
+
+        for (LinkedList<Integer> bucket : buckets) {
+            for (Integer integer : bucket) {
+                output[index] = integer;
+            }
+        }
+
+        return output;
+    }
+
+
+
+
 
     public int[] sort(int[] input, int k) {
         LinkedList<Integer>[] buckets = new LinkedList[k];
@@ -44,3 +83,29 @@ public class BucketSort{
         return value;
     }
 }
+
+
+
+
+
+
+
+//        int min = Integer.MAX_VALUE;
+//        int max = Integer.MIN_VALUE;
+//
+//        for (int i : input) {
+//            if (i < min) {
+//                min = i;
+//            }
+//            if (i > max) {
+//                max = i;
+//            }
+//        }
+
+
+
+
+//        LinkedList<Integer>[] buckets = new LinkedList[input.length];
+
+
+
