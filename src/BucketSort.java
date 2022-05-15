@@ -16,12 +16,10 @@ public class BucketSort{
             if(i > m) m = i;
         //System.out.println("max " + m);
 
-        double divider = Math.ceil((m + 1) / (double)k);
         for(int i = 0; i < input.length; i++){
             //int bI = (int)Math.floor(k * input[i] / (double)(m+1));
 
             double range = input[i] / (double)(m + 1);
-
             int bI = (int)Math.floor(range * k);
 
             //System.out.println(range * k + " : " + bI + " " + "(" + i + ")");
@@ -40,14 +38,10 @@ public class BucketSort{
         // 0 <= a[i] <= k
         for(int i = 0; i < k; i++){
             InsertionSort.sort(buckets[i]);
+            //buckets[i] = CountingSort.sort(buckets[i]);
         }
 
         int[] res = new int[input.length];
-        //for(int i = 0, l = 0; i < k; i++){
-        //    for(int j = 0; j < buckets[i].size(); j++, l++){
-        //        res[l] = buckets[i].get(j);
-        //    }
-        //}
         for(int i = 0, j = 0; i < k; i++){
             ListIterator<Integer> it = buckets[i].listIterator(0);
             while(it.hasNext()){
@@ -59,7 +53,7 @@ public class BucketSort{
     }
 
 
-    public int[] sort2(int[] input) {
+    public static int[] sort2(int[] input) {
 
 
         if (input.length < 30) {

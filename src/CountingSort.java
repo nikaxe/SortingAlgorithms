@@ -1,3 +1,7 @@
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
 public class CountingSort {
 
     public static int[] sort(int[] input){
@@ -20,6 +24,30 @@ public class CountingSort {
             j = input[i];
             count[j] -= 1;
             output[count[j]] = input[i];
+        }
+        return output;
+    }
+
+    public static LinkedList<Integer> sort(LinkedList<Integer> input){
+        int k = 0;
+        for(int i = 0; i < input.size(); i++)
+            if(k < input.get(i)) k = input.get(i);
+
+        int[] count = new int[k + 1];
+        LinkedList<Integer> output = new LinkedList<Integer>();
+        for(int i = 0; i < input.size(); i++)
+            output.addFirst(0);
+        int i, j;
+        for(i = 0; i < input.size(); i++){
+            j = input.get(i);
+            count[j] += 1;
+        }
+        for(i = 1; i <= k; i++)
+            count[i] += count[i - 1];
+        for(i = input.size() - 1; i >= 0; i--){
+            j = input.get(i);
+            count[j] -= 1;
+            output.set(count[j], input.get(i));
         }
         return output;
     }
