@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.ListIterator;
 
 public class BucketSort{
@@ -55,5 +57,40 @@ public class BucketSort{
         }
         return res;
     }
+
+
+    public int[] sort2(int[] input) {
+
+
+
+        int k = input.length / 20;
+        int[] output = new int[input.length];
+
+
+        List<LinkedList<Integer>> buckets = new ArrayList<>();
+        for (int i = 0; i < k; i++) {
+            buckets.add(new LinkedList<>());
+        }
+
+        for (int i : input) {
+            int bucketDestination = i % k;
+            buckets.get(bucketDestination).add(i);
+        }
+
+        for (LinkedList<Integer> bucket : buckets) {
+            InsertionSort.sort(bucket);
+        }
+
+        int index = 0;
+
+        for (LinkedList<Integer> bucket : buckets) {
+            for (Integer integer : bucket) {
+                output[index] = integer;
+            }
+        }
+
+        return output;
+    }
+
 
 }
