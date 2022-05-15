@@ -57,7 +57,7 @@ public class RadixSort3 {
             digitPlace *= 10;
         }
 
-        return A; 
+        return A;
     }
 
 }
