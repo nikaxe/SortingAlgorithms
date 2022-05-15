@@ -19,7 +19,7 @@ public class Main {
         //CountingSort s = new CountingSort(); // works
         //RadixSort s = new RadixSort();
         //int[] output = s.sort(input, 99);
-        int[] output = s.sort(input);
+        int[] output = s.sort2(input);
         for(int i = 0; i < numberOfInput; i++){
             System.out.print(output[i] + " ");
         }

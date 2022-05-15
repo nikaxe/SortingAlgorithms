@@ -2,7 +2,7 @@ import java.util.List;
 
 public class InsertionSort {
 
-    public int[] sort(int[] input) {
+    public static int[] sort(int[] input) {
         int i = 1;
         int x;
         int j;

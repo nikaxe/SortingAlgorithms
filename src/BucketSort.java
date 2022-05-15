@@ -62,6 +62,10 @@ public class BucketSort{
     public int[] sort2(int[] input) {
 
 
+        if (input.length < 30) {
+            return InsertionSort.sort(input);
+        }
+
 
         int k = input.length / 20;
         int[] output = new int[input.length];
@@ -86,6 +90,7 @@ public class BucketSort{
         for (LinkedList<Integer> bucket : buckets) {
             for (Integer integer : bucket) {
                 output[index] = integer;
+                index++;
             }
         }
 
