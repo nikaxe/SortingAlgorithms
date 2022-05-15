@@ -16,10 +16,10 @@ public class Main {
         System.out.print("\n");
 
         //int[] output = s.sort(input, 99);
-        int[] output = RadixSort.sort(input);
-        //for(int i = 0; i < numberOfInput; i++){
-        //    System.out.print(output[i] + " ");
-        //}
+        int[] output = BucketSort.sort3(input);
+        for(int i = 0; i < numberOfInput; i++){
+            System.out.print(output[i] + " ");
+        }
         System.out.print("\n");
 
     }

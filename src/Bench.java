@@ -67,11 +67,15 @@ public class Bench {
     };
     public static Function<int[], int[]> bucketSort = new Function<int[], int[]>() {
         @Override
-        public int[] apply(int[] array) { return BucketSort.sort(array); }
+        public int[] apply(int[] array) { return BucketSort.sort3(array); }
     };
     public static Function<int[], int[]> radixSort = new Function<int[], int[]>() {
         @Override
-        public int[] apply(int[] array) { return RadixSort.sort(array); }
+        public int[] apply(int[] array) { return RadixSort3.sort(array); }
+    };
+    public static Function<int[], int[]> pigeonholeSort = new Function<int[], int[]>() {
+        @Override
+        public int[] apply(int[] array)  { return PigeonHoleSort.sort(array); }
     };
 
     // Execute an algorithm on an input and return its runtime.
@@ -175,7 +179,8 @@ public class Bench {
                         "Merge sort     | %14s | %14s | %14s\n" +
                         "Counting sort  | %14s | %14s | %14s\n" +
                         "Bucket sort    | %14s | %14s | %14s\n" +
-                        "Radix sort     | %14s | %14s | %14s\n",
+                        "Radix sort     | %14s | %14s | %14s\n" +
+                        "Pigeonhole sort| %14s | %14s | %14s\n",
                 size,
         "Random", "95% sorted", "Sorted",
                 execute(insertionSort, randomSample),
@@ -195,7 +200,10 @@ public class Bench {
                 execute(bucketSort, sortedSample),
                 execute(radixSort, randomSample),
                 execute(radixSort, partiallySortedSample),
-                execute(radixSort, sortedSample)
+                execute(radixSort, sortedSample),
+                execute(pigeonholeSort, randomSample),
+                execute(pigeonholeSort, partiallySortedSample),
+                execute(pigeonholeSort, sortedSample)
         ));
     }
 }
