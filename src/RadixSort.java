@@ -1,30 +1,42 @@
 public class RadixSort {
     public int[] sort(int[] input){
         int[] output = new int[input.length];
-        int maxDigits = Integer.MIN_VALUE;
         int max = Integer.MIN_VALUE;
-        for(int i = 0; i < input.length; i++){
-            maxDigits = Math.max(maxDigits, countDigits(input[i]));
-            max = Math.max(max, input[i]);
-        }
-        System.out.println(maxDigits);
+        for(int i = 0; i < input.length; i++)
+            if(max < input[i]) max = input[i];
 
+        int maxDigits = countDigits(max);
+        boolean returnInput = true;
         for(int i = 0; i < maxDigits; i++){
-            countingSort(input, output, max, i);
+            returnInput = !returnInput;
+            if(returnInput) {
+                countingSort(output, input, 9, i);
+                for(int j = 0; j < input.length; j++){
+                    System.out.print(input[j] + " ");
+                }
+                System.out.print("\n");
+            }
+            else {
+                countingSort(input, output, 9, i);
+                for(int j = 0; j < input.length; j++){
+                    System.out.print(output[j] + " ");
+                }
+                System.out.print("\n");
+            }
         }
-
+        if(returnInput)
+            return input;
         return output;
     }
 
-    private int getDigit(int num, int n){
+    public int getDigit(int num, int n){
         int count = countDigits(num);
-        if(n > count)
-            return 0;
+        if(n >= count || n < 0) return 0;
         int[] digits = new int[count];
-        for(int i = 10; i < (int)Math.round(Math.pow(10, n)); i*=10){
-            digits[(int)Math.log10(i)] = num / i;
+        for(int i = 0; i < count; i++){
+            digits[i] = num % 10;
+            num /= 10;
         }
-        digits[0] = num % 10;
         return digits[n];
     }
 
@@ -32,23 +44,23 @@ public class RadixSort {
         int[] count = new int[k + 1];
         int i, j;
         for(i = 0; i < input.length; i++){
-            j = getDigit(input[i], n+1);
+            j = getDigit(input[i], n);
             count[j] += 1;
         }
         for(i = 1; i <= k; i++){
             count[i] += count[i - 1];
         }
         for(i = input.length - 1; i >= 0; i--){
-            j = getDigit(input[i], n+1);
+            j = getDigit(input[i], n);
             count[j] -= 1;
             output[count[j]] = input[i];
         }
     }
 
-    private int countDigits(int n){
-        if(n == 0)
+    public int countDigits(int n){
+        if(n == 0 || n == 1)
             return 1;
-        int digits = 1;
+        int digits = 0;
         int checker = 1;
         n = Math.abs(n);
         while(checker < n){
