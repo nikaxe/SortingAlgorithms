@@ -41,6 +41,10 @@ public class Driver {
 
 
 
+//        int[] testArray2 = Bench.generateSample(1000, 50);
+
+//        System.out.println(Arrays.toString(testArray2));
+
 
     }
 }

@@ -16,8 +16,9 @@ public class Bench {
     // Part of the array is sorted, while the rest is chosen uniformly
     // at random; the 'randomness' parameter sets what percent of the
     // array is chosen at random.
-    public static int[] generateSample(int size, int randomness) {
+    public static int[] generateSample(int size, int randomness, float knRatio) {
         int[] sample = new int[size];
+        int upperBound = (int) (size * knRatio);
         Random random = new Random();
         int previousElement = 0;
         for (int i = 0; i < size; i++) {
@@ -27,7 +28,7 @@ public class Bench {
                 sample[i] = currentElement;
                 previousElement = currentElement;
             } else {
-                sample[i] = random.nextInt(size);
+                sample[i] = random.nextInt(upperBound);
             }
         }
         return sample;
@@ -171,47 +172,90 @@ public class Bench {
         }
     }
     private static void executionTimeReport(int size) {
-        int[] sortedSample = generateSample(size, 0);
-        int[] partiallySortedSample = generateSample(size, 5);
-        int[] randomSample = generateSample(size, 100);
+        int[] sortedSample = generateSample(size, 0, 1.0f);
+        int[] partiallySortedSample = generateSample(size, 5, 1.0f);
+        int[] randomSamplekn05 = generateSample(size, 100,0.5f);
+        int[] randomSample = generateSample(size, 100,1.0f);
+        int[] randomSamplekn10 = generateSample(size, 100,10f);
+        int[] randomSamplekn100 = generateSample(size, 100,100f);
+        int[] randomSamplekn1000 = generateSample(size, 100,1000f);
         System.out.println(String.format(
                 "Arrays of length %d\n" +
                         "=================================================================\n" +
-                        "Algorithm      | %14s | %14s | %14s\n" +
-                        "Insertion sort | %14s | %14s | %14s\n" +
-                        "Quicksort      | %14s | %14s | %14s\n" +
-                        "Merge sort     | %14s | %14s | %14s\n" +
-                        "Counting sort  | %14s | %14s | %14s\n" +
-                        "Bucket sort    | %14s | %14s | %14s\n" +
-                        "Radix sort     | %14s | %14s | %14s\n" +
-                        "Pigeonhole sort| %14s | %14s | %14s\n" +
-                        "Pigeonhole sor2| %14s | %14s | %14s\n",
+                        "Algorithm      | %14s | %14s | %14s | %14s | %14s | %14s | %14s\n" +
+                        "Insertion sort | %14s | %14s | %14s | %14s | %14s | %14s | %14s\n" +
+                        "Quicksort      | %14s | %14s | %14s | %14s | %14s | %14s | %14s\n" +
+                        "Merge sort     | %14s | %14s | %14s | %14s | %14s | %14s | %14s\n" +
+                        "Counting sort  | %14s | %14s | %14s | %14s | %14s | %14s | %14s\n" +
+                        "Bucket sort    | %14s | %14s | %14s | %14s | %14s | %14s | %14s\n" +
+                        "Radix sort     | %14s | %14s | %14s | %14s | %14s | %14s | %14s\n" +
+                        "Pigeonhole sort| %14s | %14s | %14s | %14s | %14s | %14s | %14s\n" +
+                        "Pigeonhole sor2| %14s | %14s | %14s | %14s | %14s | %14s | %14s\n",
                 size,
-        "Random", "95% sorted", "Sorted",
-                execute(insertionSort, randomSample),
+        "95% sorted", "Sorted", "k/n = 0.5", "k/n = 1", "k/n = 10", "k/n = 100", "k/n = 1000",
                 execute(insertionSort, partiallySortedSample),
                 execute(insertionSort, sortedSample),
-                execute(quickSort,  randomSample),
-                execute(quickSort,  partiallySortedSample),
-                execute(quickSort,  sortedSample),
-                execute(mergeSort,  randomSample),
-                execute(mergeSort,  partiallySortedSample),
-                execute(mergeSort,  sortedSample),
-                execute(countingSort, randomSample),
+                execute(insertionSort, randomSamplekn05),
+                execute(insertionSort, randomSample),
+                execute(insertionSort, randomSamplekn10),
+                execute(insertionSort, randomSamplekn100),
+                execute(insertionSort, randomSamplekn1000),
+
+                execute(quickSort, partiallySortedSample),
+                execute(quickSort, sortedSample),
+                execute(quickSort, randomSamplekn05),
+                execute(quickSort, randomSample),
+                execute(quickSort, randomSamplekn10),
+                execute(quickSort, randomSamplekn100),
+                execute(quickSort, randomSamplekn1000),
+
+                execute(mergeSort, partiallySortedSample),
+                execute(mergeSort, sortedSample),
+                execute(mergeSort, randomSamplekn05),
+                execute(mergeSort, randomSample),
+                execute(mergeSort, randomSamplekn10),
+                execute(mergeSort, randomSamplekn100),
+                execute(mergeSort, randomSamplekn1000),
+
                 execute(countingSort, partiallySortedSample),
                 execute(countingSort, sortedSample),
-                execute(bucketSort, randomSample),
+                execute(countingSort, randomSamplekn05),
+                execute(countingSort, randomSample),
+                execute(countingSort, randomSamplekn10),
+                execute(countingSort, randomSamplekn100),
+                execute(countingSort, randomSamplekn1000),
+
                 execute(bucketSort, partiallySortedSample),
                 execute(bucketSort, sortedSample),
-                execute(radixSort, randomSample),
+                execute(bucketSort, randomSamplekn05),
+                execute(bucketSort, randomSample),
+                execute(bucketSort, randomSamplekn10),
+                execute(bucketSort, randomSamplekn100),
+                execute(bucketSort, randomSamplekn1000),
+
                 execute(radixSort, partiallySortedSample),
                 execute(radixSort, sortedSample),
-                execute(pigeonholeSort, randomSample),
+                execute(radixSort, randomSamplekn05),
+                execute(radixSort, randomSample),
+                execute(radixSort, randomSamplekn10),
+                execute(radixSort, randomSamplekn100),
+                execute(radixSort, randomSamplekn1000),
+
                 execute(pigeonholeSort, partiallySortedSample),
                 execute(pigeonholeSort, sortedSample),
-                execute(pigeonholeSort2, randomSample),
+                execute(pigeonholeSort, randomSamplekn05),
+                execute(pigeonholeSort, randomSample),
+                execute(pigeonholeSort, randomSamplekn10),
+                execute(pigeonholeSort, randomSamplekn100),
+                execute(pigeonholeSort, randomSamplekn1000),
+
                 execute(pigeonholeSort2, partiallySortedSample),
-                execute(pigeonholeSort2, sortedSample)
+                execute(pigeonholeSort2, sortedSample),
+                execute(pigeonholeSort2, randomSamplekn05),
+                execute(pigeonholeSort2, randomSample),
+                execute(pigeonholeSort2, randomSamplekn10),
+                execute(pigeonholeSort2, randomSamplekn100),
+                execute(pigeonholeSort2, randomSamplekn1000)
         ));
     }
 }

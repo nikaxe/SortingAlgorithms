@@ -50,9 +50,9 @@ public class Test {
     public static void main(String[] args) {
         for (int size = 0; ; size++) {
             System.out.printf("Testing on arrays of size %d...\n", size);
-            int[] sortedSample = Bench.generateSample(size, 0);
-            int[] partiallySortedSample = Bench.generateSample(size, 5);
-            int[] randomSample = Bench.generateSample(size, 100);
+            int[] sortedSample = Bench.generateSample(size, 0, 1.0f);
+            int[] partiallySortedSample = Bench.generateSample(size, 5, 1.0f);
+            int[] randomSample = Bench.generateSample(size, 100, 1.0f);
 
             if (!check(sortedSample)) return;
             if (!check(partiallySortedSample)) return;
