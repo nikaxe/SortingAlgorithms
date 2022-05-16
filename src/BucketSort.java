@@ -19,10 +19,10 @@ public class BucketSort{
             buckets[bI].addFirst(input[i]);
         }
 
-        for(int i = 0; i < k; i++){
-            InsertionSort.sort(buckets[i]);
-            //buckets[i] = CountingSort.sort(buckets[i]);
-        }
+        //for(int i = 0; i < k; i++){
+        //    InsertionSort.sort(buckets[i]);
+        //    //buckets[i] = CountingSort.sort(buckets[i]);
+        //}
 
         int[] res = new int[input.length];
         for(int i = 0, j = 0; i < k; i++){
@@ -32,6 +32,8 @@ public class BucketSort{
                 j++;
             }
         }
+        //InsertionSort.sort(res);
+        Arrays.sort(res);
         return res;
     }
 

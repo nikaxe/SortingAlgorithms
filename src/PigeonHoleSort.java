@@ -17,7 +17,7 @@ public class PigeonHoleSort {
 
         range = max - min + 1;
         int[] phole = new int[range];
-        Arrays.fill(phole, 0);
+        //Arrays.fill(phole, 0);
 
         for(i = 0; i < n; i++)
             phole[input[i] - min]++;
