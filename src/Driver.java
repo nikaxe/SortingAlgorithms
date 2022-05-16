@@ -5,11 +5,11 @@ public class Driver {
     public static void main(String[] args) {
 
 
-        int testInput = 57648;
+//        int testInput = 57648;
 
-        int testOutput = RadixSort2.countDigits(testInput);
+//        int testOutput = RadixSort2.countDigits(testInput);
 
-        System.out.println(testOutput);
+//        System.out.println(testOutput);
 
 //        int testOutput = RadixSort2.getDigit(testInput, 3);
 
@@ -17,6 +17,8 @@ public class Driver {
 
 
         int[] testArray = new int[]{13, 56, 45, 78, 81, 105};
+
+
 
 //        int[] testArrayOutput = RadixSort2.radixCountingsort(testArray, 0);
 //
@@ -32,7 +34,7 @@ public class Driver {
 
 
 
-        int[] testArrayOutput = RadixSort2.sort(testArray);
+        int[] testArrayOutput = PigeonHoleSort2.sort(testArray);
 
         System.out.println(Arrays.toString(testArrayOutput));
 

@@ -73,6 +73,10 @@ public class Bench {
         @Override
         public int[] apply(int[] array) { return RadixSort3.sort(array); }
     };
+    public static Function<int[], int[]> pigeonholeSort2 = new Function<int[], int[]>() {
+        @Override
+        public int[] apply(int[] array)  { return PigeonHoleSort2.sort(array); }
+    };
     public static Function<int[], int[]> pigeonholeSort = new Function<int[], int[]>() {
         @Override
         public int[] apply(int[] array)  { return PigeonHoleSort.sort(array); }
@@ -180,7 +184,8 @@ public class Bench {
                         "Counting sort  | %14s | %14s | %14s\n" +
                         "Bucket sort    | %14s | %14s | %14s\n" +
                         "Radix sort     | %14s | %14s | %14s\n" +
-                        "Pigeonhole sort| %14s | %14s | %14s\n",
+                        "Pigeonhole sort| %14s | %14s | %14s\n" +
+                        "Pigeonhole sor2| %14s | %14s | %14s\n",
                 size,
         "Random", "95% sorted", "Sorted",
                 execute(insertionSort, randomSample),
@@ -203,7 +208,10 @@ public class Bench {
                 execute(radixSort, sortedSample),
                 execute(pigeonholeSort, randomSample),
                 execute(pigeonholeSort, partiallySortedSample),
-                execute(pigeonholeSort, sortedSample)
+                execute(pigeonholeSort, sortedSample),
+                execute(pigeonholeSort2, randomSample),
+                execute(pigeonholeSort2, partiallySortedSample),
+                execute(pigeonholeSort2, sortedSample)
         ));
     }
 }
