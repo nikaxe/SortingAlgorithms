@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int numberOfInput = 100;
+        int numberOfInput = 10;
 	    int[] input = new int[numberOfInput];
         for(int i = 0; i < numberOfInput; i++){
             input[i] = i;
@@ -16,8 +16,9 @@ public class Main {
         System.out.print("\n");
 
         //int[] output = s.sort(input, 99);
-        int[] output = BucketSort.sort3(input);
-        for(int i = 0; i < numberOfInput; i++){
+        input = Bench.generateSample(100000, 100, 1000);
+        int[] output = BucketSort.sort(input);
+        for(int i = 0; i < output.length; i++){
             System.out.print(output[i] + " ");
         }
         System.out.print("\n");

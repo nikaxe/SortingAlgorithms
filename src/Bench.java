@@ -68,7 +68,7 @@ public class Bench {
     };
     public static Function<int[], int[]> bucketSort = new Function<int[], int[]>() {
         @Override
-        public int[] apply(int[] array) { return BucketSort.sort3(array); }
+        public int[] apply(int[] array) { return BucketSort.sort(array); }
     };
     public static Function<int[], int[]> radixSort = new Function<int[], int[]>() {
         @Override

@@ -2,7 +2,8 @@ import java.util.*;
 
 public class BucketSort{
     public static int[] sort(int[] input) {
-        int k = Math.max(5, input.length / 20);
+        //int k = Math.max(5, input.length / 20);
+        int k = input.length;
         LinkedList<Integer>[] buckets = new LinkedList[k];
         for(int i = 0; i < k; i++){
             buckets[i] = new LinkedList<Integer>();
@@ -14,26 +15,30 @@ public class BucketSort{
         //System.out.println("max " + m);
 
         for(int i = 0; i < input.length; i++){
-            double range = input[i] / (double)(m + 1);
-            int bI = (int)Math.floor(range * k);
-            buckets[bI].addFirst(input[i]);
+            //double range = input[i] / (double)(m + 1);
+            //int bI = (int)Math.floor(range * k);
+            int testI = (int)Math.floor(k * (input[i] / (float)(m + 1)));
+            buckets[testI].addFirst(input[i]);
         }
 
-        //for(int i = 0; i < k; i++){
-        //    InsertionSort.sort(buckets[i]);
-        //    //buckets[i] = CountingSort.sort(buckets[i]);
-        //}
+        for(int i = 0; i < k; i++){
+            InsertionSort.sort(buckets[i]);
+            //buckets[i] = CountingSort.sort(buckets[i]);
+        }
 
         int[] res = new int[input.length];
         for(int i = 0, j = 0; i < k; i++){
-            ListIterator<Integer> it = buckets[i].listIterator(0);
-            while(it.hasNext()){
-                res[j] = it.next();
-                j++;
+            //ListIterator<Integer> it = buckets[i].listIterator(0);
+            //while(it.hasNext()){
+            //    res[j] = it.next();
+            //    j++;
+            //}
+            for(int l = 0; l < buckets[i].size(); l++, j++){
+                res[j] = buckets[i].get(l);
             }
         }
         //InsertionSort.sort(res);
-        Arrays.sort(res);
+        //Arrays.sort(res);
         return res;
     }
 
