@@ -4,23 +4,24 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int numberOfInput = 10;
+        int numberOfInput = 100000;
 	    int[] input = new int[numberOfInput];
         for(int i = 0; i < numberOfInput; i++){
             input[i] = i;
         }
         shuffle(input);
-        for(int i = 0; i < numberOfInput; i++){
-            System.out.print(input[i] + "(" + i + ")" + " ");
-        }
-        System.out.print("\n");
+        //for(int i = 0; i < numberOfInput; i++){
+        //    System.out.print(input[i] + "(" + i + ")" + " ");
+        //}
+        //System.out.print("\n");
 
         //int[] output = s.sort(input, 99);
-        input = Bench.generateSample(100000, 100, 1000);
-        int[] output = BucketSort.sort(input);
-        for(int i = 0; i < output.length; i++){
-            System.out.print(output[i] + " ");
-        }
+        //input = Bench.generateSample(100000, 100, 1000);
+        System.out.println(Bench.execute(Bench.bucketSort, input));
+        //int[] output = BucketSort.sort(input);
+        //for(int i = 0; i < output.length; i++){
+        //    System.out.print(output[i] + " ");
+        //}
         System.out.print("\n");
 
     }
