@@ -34,16 +34,23 @@ public class Driver {
 
 
 
-        int[] testArrayOutput = PigeonHoleSort2.sort(testArray);
-
-        System.out.println(Arrays.toString(testArrayOutput));
+//        int[] testArrayOutput = PigeonHoleSort2.sort(testArray);
+//
+//        System.out.println(Arrays.toString(testArrayOutput));
 
 
 
 
 //        int[] testArray2 = Bench.generateSample(1000, 50);
 
-//        System.out.println(Arrays.toString(testArray2));
+//        System.out.println(Arrays.toString(testArray2));3
+
+        int hej = 100000 * 1000;
+
+        float test = hej / (float) (hej);
+
+        System.out.println(test);
+
 
 
     }
