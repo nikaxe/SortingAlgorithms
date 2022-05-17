@@ -23,7 +23,7 @@ public class BenchMany {
             average[6] += Double.parseDouble(Bench.execute(Bench.bucketSort, randomSamplekn1000).replace(',', '.'));
         }
         for(int i = 0; i < average.length; i++) {
-            average[i] /= 100.0;
+            average[i] /= numberOfTests;
             System.out.printf("%6f%n",average[i]);
         }
 
