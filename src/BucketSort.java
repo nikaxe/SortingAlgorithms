@@ -14,10 +14,11 @@ public class BucketSort{
             if(i > m) m = i;
         //System.out.println("max " + m);
 
+        //double m1 = m + 1;
         for(int i = 0; i < input.length; i++){
             //double range = input[i] / (double)(m + 1);
             //int bI = (int)Math.floor(range * k);
-            int testI = (int)Math.floor(k * (input[i] / (float)(m + 1)));
+            int testI = (int)Math.floor(k * (input[i] / (double)(m + 1)));
             buckets[testI].addFirst(input[i]);
         }
 

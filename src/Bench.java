@@ -84,7 +84,7 @@ public class Bench {
     };
 
     // Execute an algorithm on an input and return its runtime.
-    private static String execute(Function<int[], int[]> algorithm, int[] input) {
+    public static String execute(Function<int[], int[]> algorithm, int[] input) {
         // To get accurate results even for small inputs, we repeat
         // the algorithm several times in a row and count the total time.
         // We pick the number of repetitions automatically so that
