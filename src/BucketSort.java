@@ -2,8 +2,8 @@ import java.util.*;
 
 public class BucketSort{
     public static int[] sort(int[] input) {
-        //int k = Math.max(5, input.length / 20);
-        int k = input.length;
+        int k = Math.max(5, input.length / 10);
+        //int k = input.length;
         LinkedList<Integer>[] buckets = new LinkedList[k];
         for(int i = 0; i < k; i++){
             buckets[i] = new LinkedList<Integer>();

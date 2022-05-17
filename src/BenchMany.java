@@ -9,14 +9,24 @@ public class BenchMany {
         int[] randomSamplekn100 = Bench.generateSample(size, 100,100f);
         int[] randomSamplekn1000 = Bench.generateSample(size, 100,1000f);
 
-        int numberOfTests = 100;
+        int numberOfTests = 10;
         //double[] results = new double[numberOfTests];
-        Double average = 0.0;
+        //Double average = 0.0;
+        double[] average = new double[7];
         for(int i = 0; i < numberOfTests; i++){
-            average += Double.parseDouble(Bench.execute(Bench.countingSort, randomSample).replace(',', '.'));
+            average[0] += Double.parseDouble(Bench.execute(Bench.bucketSort, sortedSample).replace(',', '.'));
+            average[1] += Double.parseDouble(Bench.execute(Bench.bucketSort, partiallySortedSample).replace(',', '.'));
+            average[2] += Double.parseDouble(Bench.execute(Bench.bucketSort, randomSamplekn05).replace(',', '.'));
+            average[3] += Double.parseDouble(Bench.execute(Bench.bucketSort, randomSample).replace(',', '.'));
+            average[4] += Double.parseDouble(Bench.execute(Bench.bucketSort, randomSamplekn10).replace(',', '.'));
+            average[5] += Double.parseDouble(Bench.execute(Bench.bucketSort, randomSamplekn100).replace(',', '.'));
+            average[6] += Double.parseDouble(Bench.execute(Bench.bucketSort, randomSamplekn1000).replace(',', '.'));
         }
-        average /= 100.0;
-        System.out.printf("%6f%n",average);
+        for(int i = 0; i < average.length; i++) {
+            average[i] /= 100.0;
+            System.out.printf("%6f%n",average[i]);
+        }
+
         //String test = Bench.execute(Bench.countingSort, randomSample);
         //test = test.replace(',', '.');
         //System.out.println(test);
