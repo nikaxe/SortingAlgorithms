@@ -1,9 +1,3 @@
-//// HERE BE DRAGONS!
-// // You don't have to read any of this file.
-// It's just the benchmarking program.
-//package com.company;
-//import com.company.CountingSort;
-
 import java.util.*;
 public class Bench {
     /** Main function **/
@@ -74,13 +68,9 @@ public class Bench {
         @Override
         public int[] apply(int[] array) { return RadixSort3.sort(array); }
     };
-    public static Function<int[], int[]> pigeonholeSort2 = new Function<int[], int[]>() {
+    public static Function<int[], int[]> eCountingSort = new Function<int[], int[]>() {
         @Override
-        public int[] apply(int[] array)  { return PigeonHoleSort2.sort(array); }
-    };
-    public static Function<int[], int[]> pigeonholeSort = new Function<int[], int[]>() {
-        @Override
-        public int[] apply(int[] array)  { return PigeonHoleSort.sort(array); }
+        public int[] apply(int[] array)  { return ECountingSort.sort(array); }
     };
 
     // Execute an algorithm on an input and return its runtime.
@@ -189,8 +179,7 @@ public class Bench {
                         "Counting sort  | %14s | %14s | %14s | %14s | %14s | %14s | %14s\n" +
                         "Bucket sort    | %14s | %14s | %14s | %14s | %14s | %14s | %14s\n" +
                         "Radix sort     | %14s | %14s | %14s | %14s | %14s | %14s | %14s\n" +
-                        "Pigeonhole sort| %14s | %14s | %14s | %14s | %14s | %14s | %14s\n" +
-                        "Pigeonhole sor2| %14s | %14s | %14s | %14s | %14s | %14s | %14s\n",
+                        "Pigeonhole sort| %14s | %14s | %14s | %14s | %14s | %14s | %14s\n",
                 size,
         "95% sorted", "Sorted", "k/n = 0.5", "k/n = 1", "k/n = 10", "k/n = 100", "k/n = 1000",
                 execute(insertionSort, partiallySortedSample),
@@ -241,21 +230,13 @@ public class Bench {
                 execute(radixSort, randomSamplekn100),
                 execute(radixSort, randomSamplekn1000),
 
-                execute(pigeonholeSort, partiallySortedSample),
-                execute(pigeonholeSort, sortedSample),
-                execute(pigeonholeSort, randomSamplekn05),
-                execute(pigeonholeSort, randomSample),
-                execute(pigeonholeSort, randomSamplekn10),
-                execute(pigeonholeSort, randomSamplekn100),
-                execute(pigeonholeSort, randomSamplekn1000),
-
-                execute(pigeonholeSort2, partiallySortedSample),
-                execute(pigeonholeSort2, sortedSample),
-                execute(pigeonholeSort2, randomSamplekn05),
-                execute(pigeonholeSort2, randomSample),
-                execute(pigeonholeSort2, randomSamplekn10),
-                execute(pigeonholeSort2, randomSamplekn100),
-                execute(pigeonholeSort2, randomSamplekn1000)
+                execute(eCountingSort, partiallySortedSample),
+                execute(eCountingSort, sortedSample),
+                execute(eCountingSort, randomSamplekn05),
+                execute(eCountingSort, randomSample),
+                execute(eCountingSort, randomSamplekn10),
+                execute(eCountingSort, randomSamplekn100),
+                execute(eCountingSort, randomSamplekn1000)
         ));
     }
 }

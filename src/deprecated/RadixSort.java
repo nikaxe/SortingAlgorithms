@@ -1,3 +1,5 @@
+package deprecated;
+
 public class RadixSort {
     public static int[] sort(int[] input){
         int maxDigits = countDigits(getMax(input));

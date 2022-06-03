@@ -1,6 +1,3 @@
-import java.util.Arrays;
-import java.util.Scanner;
-
 public class RadixSort3 {
     /* Java implementation Radix Sort */
 

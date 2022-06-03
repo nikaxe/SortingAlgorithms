@@ -1,3 +1,5 @@
+package deprecated;
+
 import java.util.Random;
 
 public class Main {
@@ -17,7 +19,7 @@ public class Main {
 
         //int[] output = s.sort(input, 99);
         //input = Bench.generateSample(100000, 100, 1000);
-        System.out.println(Bench.execute(Bench.bucketSort, input));
+        //System.out.println(Bench.execute(Bench.bucketSort, input));
         //int[] output = BucketSort.sort(input);
         //for(int i = 0; i < output.length; i++){
         //    System.out.print(output[i] + " ");

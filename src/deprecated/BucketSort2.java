@@ -1,3 +1,5 @@
+package deprecated;
+
 import java.util.*;
 import java.util.Collections;
 

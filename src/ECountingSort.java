@@ -1,6 +1,4 @@
-import java.util.Arrays;
-
-public class PigeonHoleSort {
+public class ECountingSort {
     public static int[] sort(int[] input){
         int n = input.length;
         int min = input[0];
@@ -17,7 +15,6 @@ public class PigeonHoleSort {
 
         range = max - min + 1;
         int[] phole = new int[range];
-//        Arrays.fill(phole, 0);
 
         for(i = 0; i < n; i++)
             phole[input[i] - min]++;

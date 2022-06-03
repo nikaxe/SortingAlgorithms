@@ -25,12 +25,6 @@ public class Lab1 {
         int pivot = partition(array, begin, end);
         quickSort(array, begin, pivot - 1);
         quickSort(array, pivot + 1, end);
-        // best case
-        // T(n) = O(n) * T(n/2) + T(n/2) = O(n) * 2 * T(n/2) -> n * (1/2 + 1/4 + ... + ) = n * log(n)
-        // worst case
-        // T(n) = n * T(n-1) + n * T(1) = n * T(n-2) + n * T(1) + n = n * T(n-3) + 2n + T(n) = ...
-        //      = n^2
-        // O(n) * 2 * T(n-1) = O(n) * O(n) * O(1) = O(n^2)
     }
 
     // .Partition part of an array, and return the index where the pivot ended up
@@ -67,14 +61,6 @@ public class Lab1 {
     // Mergesort part of an array
     private static int[] mergeSort(int[] array, int begin, int end) {
         throw new UnsupportedOperationException();
-    }
-
-    public static void main(String[] args)
-    {
-        int[] array = mergeSort(new int[]{0, 6, 4, 7, 2, 8, 9, 1});
-        for (int i : array) {
-            System.out.print(i + ", ");
-        }
     }
 
     // Merge two sorted arrays into one

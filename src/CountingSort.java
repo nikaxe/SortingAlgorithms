@@ -1,10 +1,7 @@
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Vector;
 
 public class CountingSort {
-
     public static int[] sort(int[] input){
         int k = 0;
         for(int i = 0; i < input.length; i++){

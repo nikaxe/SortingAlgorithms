@@ -1,3 +1,5 @@
+package deprecated;
+
 import java.util.LinkedList;
 
 public class BucketSort3 {
@@ -29,7 +31,7 @@ public class BucketSort3 {
 
 
         for (LinkedList<Integer> bucket : buckets) {
-            InsertionSort.sort(bucket);
+            //InsertionSort.sort(bucket);
 //            Collections.sort(bucket);
         }
 
