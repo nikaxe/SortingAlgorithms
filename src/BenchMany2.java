@@ -1,4 +1,5 @@
 public class BenchMany2 {
+    // Runs a benchmark over the test cases for a single algorithm
     public static void main(String[] args){
 
         int[] inputs = new int[]{10, 30, 100, 300, 1000, 3000, 10000, 30000, 100000};

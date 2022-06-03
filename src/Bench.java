@@ -179,7 +179,7 @@ public class Bench {
                         "Counting sort  | %14s | %14s | %14s | %14s | %14s | %14s | %14s\n" +
                         "Bucket sort    | %14s | %14s | %14s | %14s | %14s | %14s | %14s\n" +
                         "Radix sort     | %14s | %14s | %14s | %14s | %14s | %14s | %14s\n" +
-                        "Pigeonhole sort| %14s | %14s | %14s | %14s | %14s | %14s | %14s\n",
+                        "E-Counting sort| %14s | %14s | %14s | %14s | %14s | %14s | %14s\n",
                 size,
         "95% sorted", "Sorted", "k/n = 0.5", "k/n = 1", "k/n = 10", "k/n = 100", "k/n = 1000",
                 execute(insertionSort, partiallySortedSample),

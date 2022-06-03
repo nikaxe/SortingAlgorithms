@@ -3,6 +3,7 @@ import java.util.List;
 
 public class CountingSort {
     public static int[] sort(int[] input){
+        // Find range
         int k = 0;
         for(int i = 0; i < input.length; i++){
             if(k < input[i]) k = input[i];
@@ -11,13 +12,16 @@ public class CountingSort {
         int[] count = new int[k + 1];
         int[] output = new int[input.length];
         int i, j;
+        // Count input
         for(i = 0; i < input.length; i++){
             j = input[i];
             count[j] += 1;
         }
+        // Accumulate input
         for(i = 1; i <= k; i++){
             count[i] += count[i - 1];
         }
+        // Populate output, guided by the count array
         for(i = input.length - 1; i >= 0; i--){
             j = input[i];
             count[j] -= 1;

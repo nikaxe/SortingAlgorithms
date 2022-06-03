@@ -1,60 +1,49 @@
 public class RadixSort3 {
-    /* Java implementation Radix Sort */
-
-
-    // This  function gives maximum value in array[]
-    public static int getMax(int A[]) {
-        int max = A[0];
-        for (int i = 1; i < A.length; i++) {
-            if (A[i] > max)
-                max = A[i];
+    // Returns the maximum value in an int array.
+    public static int getMax(int input[]) {
+        int max = input[0];
+        for (int i = 1; i < input.length; i++) {
+            if (input[i] > max)
+                max = input[i];
         }
         return max;
     }
 
-    // Main Radix Sort sort function
-    public static int[] sort(int A[]) {
-        int digitPlace = 1;
-        int n = A.length;
-        int result[] = new int[n]; // resulting array
-        // Find the largest number to know number of digits
-        int largestNum = getMax(A);
+    // Radix sort
+    public static int[] sort(int input[]) {
+        int digit = 1;
+        int n = input.length;
+        int result[] = new int[n];
+        int max = getMax(input);
 
-
-        //we run loop until we reach the largest digit place
-        while (largestNum / digitPlace > 0) {
-
+        while (max / digit > 0) {
+            // Create the count array
             int count[] = new int[10];
-            //Initializing counting array C[] to 0
             for (int i = 0; i < 10; i++)
                 count[i] = 0;
 
-            //Store the count of "keys" or digits in count[]
+            // Populate the count array
             for (int i = 0; i < n; i++)
-                count[(A[i] / digitPlace) % 10]++;
+                count[(input[i] / digit) % 10]++;
 
-            // Change count[i] so that count[i] now contains actual
-            //  position of this digit in result[]
-            //  Working similar to the counting sort algorithm
+            // Accumulate count array
             for (int i = 1; i < 10; i++)
                 count[i] += count[i - 1];
 
-            // Build the resulting array
+            // Fill result array, guided by the count array
             for (int i = n - 1; i >= 0; i--) {
-                result[count[(A[i] / digitPlace) % 10] - 1] = A[i];
-                count[(A[i] / digitPlace) % 10]--;
+                result[count[(input[i] / digit) % 10] - 1] = input[i];
+                count[(input[i] / digit) % 10]--;
             }
 
-            // Now main array A[] contains sorted
-            // numbers according to current digit place
+            // Reorder original array
             for (int i = 0; i < n; i++)
-                A[i] = result[i];
+                input[i] = result[i];
 
-            // Move to next digit place
-            digitPlace *= 10;
+            digit *= 10;
         }
 
-        return A;
+        return input;
     }
 
 }
